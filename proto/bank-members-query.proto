@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package bank_members_query;
+
+option go_package = "./";
+
+service BankMembersQueryService {}
+
+// Member
+message Member {
+  string id = 1;
+  string type = 2;
+  int32 numberId = 3;
+  string email = 4;
+  string credentialType = 5;
+  string credentialNumber = 6;
+  string firstname = 7;
+  string lastname = 8;
+  string phone = 9;
+  bool acceptedConditions = 10;
+  string street = 11;
+  string city = 12;
+  string group = 13;
+  string activity = 14;
+  string enterpriseType = 15;
+}
+
+message FindAllMembersResponseData {
+  repeated Member members = 15;
+  int32 total = 16;
+  int32 count = 17;
+  int32 page = 18;
+}
+
+// FindAllMembers
+message FinAllMembersRequest {
+  int32 page = 1;
+}
+
+message FindAllMembersResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllMembersResponseData data = 3;
+}
+
+// FindMember
+message FindMemberRequest {
+  string id = 1;
+}
+
+message FindMemberResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  Member data = 3;
+}
